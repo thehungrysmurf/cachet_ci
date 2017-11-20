@@ -1,4 +1,4 @@
-###Running Cachet unit tests
+### Running Cachet unit tests
 
 Running tests is driven by the `cachet_run_tests.sh` script in this repo.
 The setup involves retrieving and building the Cachet app as follows:
