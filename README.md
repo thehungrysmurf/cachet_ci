@@ -1,5 +1,4 @@
-
-### Overview
+## Overview
 This mock Cachet CI pipeline consists of a local Jenkins server which runs 2 tasks:
 
 1. Build Cachet and run unit tests for a parameter-specified branch
@@ -26,3 +25,11 @@ If I had more time available, I would continue the task as follows.
 - To deploy a specific versions, Jenkins could check out a version tag before building the image and push the image to the registry with a name that includes the tag.
 - To deploy multiple versions within the same job, the versions we build continuously could be listed in a versioned text file that Jenkins reads, and builds all the versions (tags) in the list.
 - Modify the container deployment to deploy to a Kubernetes cluster instead of a local Docker image. This can be accomplished starting a cluster using Minikube or similar on the Jenkins server, and run a deployment for each image pushed to the registry by the job.
+
+Per the project specs, a dashboard is also needed to provide insight into the health and metrics of the application. This dashboard should include, at minimum:
+
+- Unit test pass/fail results
+- Duration of deployment for latest version, delta from previous version
+- API response times for a given set of requests from deployments running against different database flavors (assess database-specific bottlenecks)
+- API response time degradation from previous versions for the same set of requests
+- Results of throughput/performance tests for latest version (these tests don't exist yet in Cachet but could be added using Apache Benchmark for example), and delta from previous version.
